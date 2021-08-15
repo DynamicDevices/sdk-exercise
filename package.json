@@ -1,15 +1,15 @@
 {
-  "name": "skateboard",
+  "name": "pace-check",
   "version": "0.1.0",
   "private": true,
   "license": "UNLICENSED",
   "devDependencies": {
-    "@fitbit/sdk": "~3.1.0",
-    "@fitbit/sdk-cli": "^1.6.3"
+    "@fitbit/sdk": "~4.3.0",
+    "@fitbit/sdk-cli": "^1.7.3"
   },
   "fitbit": {
     "appType": "app",
-    "appDisplayName": "Skateboard",
+    "appDisplayName": "Pace Check",
     "iconFile": "resources/icon.png",
     "wipeColor": "#ffffff",
     "requestedPermissions": [
@@ -17,12 +17,11 @@
       "access_exercise",
       "access_heart_rate",
       "access_location",
-      "access_user_profile"
+      "access_user_profile",
+      "run_background"
     ],
     "buildTargets": [
-      "higgs",
-      "meson",
-      "gemini"
+      "higgs"
     ],
     "i18n": {},
     "appUUID": "a48bf6d0-8b8e-4b7d-863e-3a235e518942"

@@ -10,6 +10,10 @@ import GPS from "../subviews/gps";
 import HRM from "../subviews/hrm";
 import Popup from "../subviews/popup";
 
+import { vibration } from "haptics";
+
+// Get the value of the setting
+
 const $ = $at("#view-exercise");
 
 export class ViewExercise extends View {
@@ -120,6 +124,7 @@ export class ViewExercise extends View {
         }
         break;
     }
+
   }
 
   onMount() {
@@ -145,6 +150,10 @@ export class ViewExercise extends View {
   }
 
   onRender() {
+
+  console.log(`minPace: ${config.paceOptions.minPace}`);
+  console.log(`maxPace: ${config.paceOptions.maxPace}`);
+
     if (exercise && exercise.stats) {
 
       const speed = utils.formatSpeed(exercise.stats.speed.current);
@@ -154,6 +163,12 @@ export class ViewExercise extends View {
       const speedAvg = utils.formatSpeed(exercise.stats.speed.average);
       this.lblSpeedAvg.text = speedAvg.value;
       this.lblSpeedAvgUnits.text = `speed avg ${speedAvg.units}`;
+
+      if( speedAvg.value > config.paceOptions.minPace) {
+        vibration.start("alert");
+      } else {
+        vibration.stop();
+      }
 
       const speedMax = utils.formatSpeed(exercise.stats.speed.max);
       this.lblSpeedMax.text = speedMax.value;
